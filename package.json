@@ -1,0 +1,19 @@
+{
+  "name": "hansstrausl-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "blog.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hans-strudel/hansstrausl-site.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hans-strudel/hansstrausl-site/issues"
+  },
+  "homepage": "https://github.com/hans-strudel/hansstrausl-site#readme"
+}
