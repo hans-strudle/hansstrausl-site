@@ -4,52 +4,36 @@
     "description": "Overview of how this site runs",
     "date": "December 7th, 2016"
 }
-
-This is a small post outlining how this blog works, and how I essentially created my own little CMS.
+This is a small post outlining how this blog works, and is really just a test of the system I have set up.
 
 The frontend is pure static HTML5/CSS, no Javascript.
 
-<div class="center">
-<i>I hate frameworks</i>
-</div>
-
-The backend is just a small node.js app that responds to the HTTP requests made by your browser.
+The backend is just a small node.js app running on <a href="https://heroku.com">Heroku</a>. I have <a href="/nodejs-app-on-heroku">another post</a> going into more detail about the node.js app and deploying it to Heroku.
 
 The only thing that is fairly special (in my opinion), is how I write my posts and build the HTML files
 that you see.
 
-To make a new post, I just write a small file with some JSON data at the top, and the body below.
+To make a new post, I create a new folder and create a post.jst file, which contains some JSON data at the top 
+defining the post title, description, path and date, and then I write the contents of the post below that.
 
-For example, this is the file that defines this exact blog post:
+Here is an example file:
 <pre>
 {
-    "title": "This Site.",
-    "path": "this-site",
-    "description": "Overview of how this site runs",
-    "date": "December 7th, 2016"
+  "title": "Test Post",
+  "path": "test-post",
+  "description": "This is a test post",
+  "date": "January 1st, 2016"
 }
+This is a simple test post.
 
-This is a small post outlining how this blog works, and how I essentially created my own little CMS.
-
-The frontend is pure static HTML5/CSS, no Javascript.
-
+Some custom html:
 &&<div class="center"&&>
-&&<i&&>I hate frameworks&&</i&&>
+ &&<i&&>Some centered and italicized text&&</i&&> 
 &&</div&&>
-
-The backend is just a small node.js app that responds to the HTTP requests made by your browser.
-
-The only thing that is fairly special (in my opinion), is how I write my posts and build the HTML files
-that you see.
-
-To make a new post, I just write a small file with some JSON data at the top, and the body below.
-
-For example, this is the file that defines this exact blog post:
-&&<pre&&>
-<i>And down the rabbit hole it goes</i>
-&&</pre&&>
 </pre>
 
-You probably noticed that in the file I use &&< and &&>, this tells the post compiler to write out
-&amplt; and &ampgt; which will actually display the characters &gt; and &lt; rather than try and render 
+I use &&< and &&>, this tells the post compiler to write out
+&amplt; and &ampgt; which will actually display the characters &lt; and &gt; rather than try and render 
 them as HTML.
+
+

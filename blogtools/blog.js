@@ -8,6 +8,7 @@ var map = {};
 
 var statics = [
     '/404.html',
+    '/about.html',
     '/css/all.css',
     '/js/all.js',
     '/favicon.ico'

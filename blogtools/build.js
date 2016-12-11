@@ -1,8 +1,8 @@
 var fs = require('fs');
 
-var template = fs.readFileSync('template.html','utf8');
+var template = fs.readFileSync(__dirname + '/template.html','utf8');
 
-var index = fs.readFileSync('indexTemplate.html','utf8');
+var index = fs.readFileSync(__dirname + '/indexTemplate.html','utf8');
 
 var posts = {};
 
@@ -26,20 +26,20 @@ function buildPostHTML(file, cb){
   fin += txt;
   fin += '</div>';
   try {
-    fs.mkdirSync('blog/' + metadata.path);
+    fs.mkdirSync(__dirname + '/blog/' + metadata.path);
   } catch (e){
    console.log('Post Already Exists');
   }
-  fs.writeFileSync('blog/' + metadata.path + '/index.html', template.replace('{{POST}}', fin).replace('{{DESCRIPTION}}', metadata.description));
+  fs.writeFileSync(__dirname + '/blog/' + metadata.path + '/index.html', template.replace('{{POST}}', fin).replace('{{DESCRIPTION}}', metadata.description).replace('{{TITLE}}', metadata.title));
   cb(metadata.path);
 }
 
-fs.readdirSync('posts').forEach(function(folder){
-  path = 'posts/' + folder;
+fs.readdirSync(__dirname + '/posts').forEach(function(folder){
+  path = __dirname + '/posts/' + folder;
   buildPostHTML(path + '/post.jst', function(npath){
     var files = fs.readdirSync(path);
     files.forEach(function(file){
-      fs.createReadStream(path + '/' + file).pipe(fs.createWriteStream('blog/' + npath + '/' + file));
+      fs.createReadStream(path + '/' + file).pipe(fs.createWriteStream(__dirname + '/blog/' + npath + '/' + file));
     })
   });
 })
@@ -53,4 +53,5 @@ orderedPosts.forEach(function(post){
   index = index.replace('<post>', '<post><div class="post">' + metaToHTML(posts[post]) + '</div>');
 })
 
-fs.writeFileSync('blog/index.html', index);
+fs.writeFileSync(__dirname + '/blog/index.html', index);
+
