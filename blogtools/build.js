@@ -22,7 +22,11 @@ function buildPostHTML(file, cb){
   var fin = metaToHTML(metadata, true);
   fin += '<div class="full">';
   var txt = post.substring(metadataEnd, post.length);
-  txt = txt.replace(/\r\n\r\n/g, '<p>').replace(/\n\n/g, '<p>').replace(/&</g, '&lt;').replace(/&>/g, '&gt;');
+  txt = txt.replace(/\r\n\r\n/g, '<p>')
+           .replace(/\n\n/g, '<p>')
+           .replace(/&</g, '&lt;')
+           .replace(/&>/g, '&gt;')
+           .replace(/<a href/g, '<a target="_blank" href');
   fin += txt;
   fin += '</div>';
   try {
@@ -30,7 +34,8 @@ function buildPostHTML(file, cb){
   } catch (e){
    console.log('Post Already Exists');
   }
-  fs.writeFileSync(__dirname + '/blog/' + metadata.path + '/index.html', template.replace('{{POST}}', fin).replace('{{DESCRIPTION}}', metadata.description).replace('{{TITLE}}', metadata.title));
+  fs.writeFileSync(__dirname + '/blog/' + metadata.path + '/index.html', 
+    template.replace('{{POST}}', fin).replace('{{DESCRIPTION}}', metadata.description).replace('{{TITLE}}', metadata.title));
   cb(metadata.path);
 }
 

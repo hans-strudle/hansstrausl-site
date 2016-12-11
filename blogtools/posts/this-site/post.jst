@@ -13,7 +13,7 @@ The backend is just a small node.js app running on <a href="https://heroku.com">
 The only thing that is fairly special (in my opinion), is how I write my posts and build the HTML files
 that you see.
 
-To make a new post, I create a new folder and create a post.jst file, which contains some JSON data at the top 
+To make a new post, I create a new folder inside a specific posts folder and create a <a href="../this-site/post.jst">post.jst</a> file, which contains some JSON data at the top 
 defining the post title, description, path and date, and then I write the contents of the post below that.
 
 Here is an example file:
@@ -27,13 +27,14 @@ Here is an example file:
 This is a simple test post.
 
 Some custom html:
-&&<div class="center"&&>
- &&<i&&>Some centered and italicized text&&</i&&> 
-&&</div&&>
+&<div class="center">
+ &<i>Some centered and italicized text&</i> 
+&</div>
+Some code:
+&<pre>
+console.log('Hello World!');
+&</pre>
 </pre>
+After I have written the file, I run a small script that will loop through the directory of posts, generating the HTML files for each post, and then finally generate the HTML file for the index which displays all of the posts.
 
-I use &&< and &&>, this tells the post compiler to write out
-&amplt; and &ampgt; which will actually display the characters &lt; and &gt; rather than try and render 
-them as HTML.
-
-
+It's as simple as that, then I just push my repo to Github, and it will automatically deploy the changes to my Heroku dyno.

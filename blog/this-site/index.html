@@ -1,5 +1,6 @@
 <html>
 <head>
+	<title>This Site.</title>
 	<meta name="viewport" content="width=device-width">
 	<meta name="author" content="Hans Strausl">
 	<meta name="description" content="Overview of how this site runs">
@@ -17,29 +18,31 @@
 	</div>
 	<div class="main">
 		<div class="post">
-<div class="title current"><a href="this-site">This Site.</a></div><div class="description">Overview of how this site runs</div><div class="date">December 7th, 2016</div><div class="split"></div><div class="full"><p>This is a small post outlining how this blog works, and how I essentially created my own little CMS.<p>The frontend is pure static HTML5/CSS, no Javascript.<p><div class="center">
-<i>I hate frameworks</i>
-</div><p>The backend is just a small node.js app that responds to the HTTP requests made by your browser.<p>The only thing that is fairly special (in my opinion), is how I write my posts and build the HTML files
-that you see.<p>To make a new post, I just write a small file with some JSON data at the top, and the body below.<p>For example, this is the file that defines this exact blog post:
+<div class="title current"><a href="this-site">This Site.</a></div><div class="description">Overview of how this site runs</div><div class="date">December 7th, 2016</div><div class="split"></div><div class="full">
+This is a small post outlining how this blog works, and is really just a test of the system I have set up.<p>The frontend is pure static HTML5/CSS, no Javascript.<p>The backend is just a small node.js app running on <a target="_blank" href="https://heroku.com">Heroku</a>. I have <a target="_blank" href="/nodejs-app-on-heroku">another post</a> going into more detail about the node.js app and deploying it to Heroku.<p>The only thing that is fairly special (in my opinion), is how I write my posts and build the HTML files
+that you see.<p>To make a new post, I create a new folder inside a specific posts folder and create a <a target="_blank" href="../this-site/post.jst">post.jst</a> file, which contains some JSON data at the top 
+defining the post title, description, path and date, and then I write the contents of the post below that.<p>Here is an example file:
 <pre>
 {
-    "title": "This Site.",
-    "path": "this-site",
-    "description": "Overview of how this site runs",
-    "date": "December 7th, 2016"
-}<p>This is a small post outlining how this blog works, and how I essentially created my own little CMS.<p>The frontend is pure static HTML5/CSS, no Javascript.<p>&&lt;div class="center"&&gt;
-&&lt;i&&gt;I hate frameworks&&lt;/i&&gt;
-&&lt;/div&&gt;<p>The backend is just a small node.js app that responds to the HTTP requests made by your browser.<p>The only thing that is fairly special (in my opinion), is how I write my posts and build the HTML files
-that you see.<p>To make a new post, I just write a small file with some JSON data at the top, and the body below.<p>For example, this is the file that defines this exact blog post:
-&&lt;pre&&gt;
-<i>And down the rabbit hole it goes</i>
-&&lt;/pre&&gt;
-</pre><p>You probably noticed that in the file I use &&lt; and &&gt;, this tells the post compiler to write out
-&amplt; and &ampgt; which will actually display the characters &gt; and &lt; rather than try and render 
-them as HTML.
+  "title": "Test Post",
+  "path": "test-post",
+  "description": "This is a test post",
+  "date": "January 1st, 2016"
+}
+This is a simple test post.<p>Some custom html:
+&lt;div class="center">
+ &lt;i>Some centered and italicized text&lt;/i> 
+&lt;/div>
+Some code:
+&lt;pre>
+console.log('Hello World!');
+&lt;/pre>
+</pre>
+After I have written the file, I run a small script that will loop through the directory of posts, generating the HTML files for each post, and then finally generate the HTML file for the index which displays all of the posts.<p>It's as simple as that, then I just push my repo to Github, and it will automatically deploy the changes to my Heroku dyno.
 </div>
 		</div>
 	</div>
 	<div class="footer">Hans Strausl - 2016</div>
+	<script src="/js/all.js"></script>
 </body>
 </html>

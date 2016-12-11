@@ -8,6 +8,7 @@ var map = {};
 
 var statics = [
     '/404.html',
+    '/about.html',
     '/css/all.css',
     '/js/all.js',
     '/favicon.ico'
@@ -34,4 +35,4 @@ function handleRequest(req, res){
 
 var server = http.createServer(handleRequest);
 
-server.listen(process.env.PORT || 80, function(){ console.log('Server listening on port 80')});
+server.listen(process.env.PORT || 80, function(){ console.log('Server listening on port ', process.env.port || 80)});
