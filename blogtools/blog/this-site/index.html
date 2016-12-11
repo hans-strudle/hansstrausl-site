@@ -1,0 +1,45 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width">
+	<meta name="author" content="Hans Strausl">
+	<meta name="description" content="Overview of how this site runs">
+	<link rel="stylesheet" type="text/css" href="/css/all.css">
+</head>
+<body>
+	<div class="header">
+		<div class="navLink">
+			<a href="/">POSTS</a>
+		</div>
+		<div class="logo"><span>HS</span></div>
+		<div class="navLink">
+			<a href="/about.html">ABOUT</a>
+		</div>
+	</div>
+	<div class="main">
+		<div class="post">
+<div class="title current"><a href="this-site">This Site.</a></div><div class="description">Overview of how this site runs</div><div class="date">December 7th, 2016</div><div class="split"></div><div class="full"><p>This is a small post outlining how this blog works, and how I essentially created my own little CMS.<p>The frontend is pure static HTML5/CSS, no Javascript.<p><div class="center">
+<i>I hate frameworks</i>
+</div><p>The backend is just a small node.js app that responds to the HTTP requests made by your browser.<p>The only thing that is fairly special (in my opinion), is how I write my posts and build the HTML files
+that you see.<p>To make a new post, I just write a small file with some JSON data at the top, and the body below.<p>For example, this is the file that defines this exact blog post:
+<pre>
+{
+    "title": "This Site.",
+    "path": "this-site",
+    "description": "Overview of how this site runs",
+    "date": "December 7th, 2016"
+}<p>This is a small post outlining how this blog works, and how I essentially created my own little CMS.<p>The frontend is pure static HTML5/CSS, no Javascript.<p>&&lt;div class="center"&&gt;
+&&lt;i&&gt;I hate frameworks&&lt;/i&&gt;
+&&lt;/div&&gt;<p>The backend is just a small node.js app that responds to the HTTP requests made by your browser.<p>The only thing that is fairly special (in my opinion), is how I write my posts and build the HTML files
+that you see.<p>To make a new post, I just write a small file with some JSON data at the top, and the body below.<p>For example, this is the file that defines this exact blog post:
+&&lt;pre&&gt;
+<i>And down the rabbit hole it goes</i>
+&&lt;/pre&&gt;
+</pre><p>You probably noticed that in the file I use &&lt; and &&gt;, this tells the post compiler to write out
+&amplt; and &ampgt; which will actually display the characters &gt; and &lt; rather than try and render 
+them as HTML.
+</div>
+		</div>
+	</div>
+	<div class="footer">Hans Strausl - 2016</div>
+</body>
+</html>

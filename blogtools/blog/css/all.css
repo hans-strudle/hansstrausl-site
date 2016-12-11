@@ -1,0 +1,94 @@
+div {
+	width: 100%;
+	margin: 0 auto;
+	opacity: 0.97;
+}
+a {
+	font-style:italic;
+	color: #000000;
+	text-decoration: none;
+}
+a:hover, .current {
+	text-decoration: underline;
+}
+.header {
+	margin-top: 20px;
+	text-align: center;
+	min-width: 300px;
+	width: 90%;
+	max-width: 800px;
+	display: flex;
+}
+
+.logo {
+	border: 5px solid black;
+	height: 48px;
+	max-width: 50px;
+	padding-left: 2px;
+	padding-right: 2px;
+	font-size: 36px;
+	line-height: 48px;
+}
+.logo:hover span {
+	display: none;
+}
+.logo:hover:before {
+	content: '33';
+}
+
+.navLink {
+	width: 40%;
+	font-size: 1.4em;
+	line-height: 64px;
+}
+.main {
+	margin-top: 20px;
+	min-width: 300px;
+	width: 90%;
+	max-width: 900px;
+	min-height: 70%;
+}
+.post {
+	margin-bottom: 20px;
+}
+.title {
+	font-size: 1.5em;
+	font-style: italic;
+	font-weight: bold;
+}
+.description {
+	font-size: 1.2em;
+}
+.split {
+	margin-top: 7px;
+	margin-bottom: 7px;
+	width: 95%;
+	height: 1px;
+	background-color: #000000;
+	opacity: 0.2;
+}
+.date {
+	font-style: italic;
+	opacity: 0.6;
+	text-align: right;
+}
+.full {
+	font-size: 1.25em;
+}
+.about {
+	font-size: 1.25em;
+	text-align: center;
+}
+pre {
+	background: #EEEEEE;
+	overflow: auto;
+	padding: 5px;
+}
+.center {
+	text-align: center;
+}
+.footer {
+	text-align: center;
+	margin-top: 25px;
+	opacity: 0.5;
+}
