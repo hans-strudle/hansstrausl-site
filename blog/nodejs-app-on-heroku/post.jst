@@ -2,7 +2,49 @@
     "title": "Running a node.js Blog on Heroku",
     "path": "nodejs-app-on-heroku",
     "description": "Quick overview and guide on how I setup this website as a small node.js app on Heroku",
-    "date": "December 11th, 2016"
+    "date": "December 13th, 2016"
+}
+This site is a small node.js app, running on a single (and free) Heroku dyno. This post will be a simple overview
+on how I set it up and why I have come to love it.
+
+<b>Note:</b>
+I went throught this process without using the <a href="https://devcenter.heroku.com/articles/heroku-cli">Heroku CLI</a>, which every tutorial and guide seemed to rely on. I have not found the need to use it yet but if you are a command line junky it appears to be very powerful.
+
+First and foremost, I went and signed up for a <a href="https://heroku.com">Heroku</a> account, which is fast and free.
+Then I created a new app with a single free dyno.
+
+Next I created a git repository on my personal github account, and connected my GitHub account to my Heroku app, which, again, was super fast and easy. I was able to search through my GitHub repos on Heroku, and select which one to deploy to the dyno, and I could even specify a specific branch if I wanted to.
+
+<img src="../nodejs-app-on-heroku/github.png">
+
+For the first few revisions of my application I would manually deploy the changes, but once I got a solid base I turned on Automatic Deploys, which will detect any new commits to the repo you specify and automatically update the dyno with the changes. You can even set it to only deploy after it has passed CI. Again, super fast, and super easy.
+
+<img src="../nodejs-app-on-heroku/autodeploy.png">
+
+In the case of a node.js app, Heroku will detect your <code>package.json</code> file, and configure the dyno to run node, as well as pull any dependencies specified.
+
+There are only a few specific things you will have to add to your app to make it work on Heroku. First, you will need to create a <code>Procfile</code> at the root of your repo with the following:
+<pre>
+web: node index.js
+</pre>
+
+Where <code>index.js</code> is the entry point for your application. The <code>web:</code> part tells the dyno to configure HTTP correctly.
+
+The only other change was to allow my application to use whatever port the dyno specified. The dyno will set the environment vairable <code>PORT</code> to whatever the dyno is configured to use, and that is what your app should use to listen on. That means your app should look something like this:
+
+<pre>
+var http = require('http');
+
+function reqHandler(req, res){
+  console.log('Hit: ', req.url);
+  res.end('&<h1>Hello World&</h1>');
 }
 
-<i>In Progress</i>
+var server = http.createServer(reqHandler);
+
+server.listen(process.env.PORT || 80); // use the PORT env var, fallback to port 80
+</pre>
+
+That is all I needed to do to get my app up and running, I can now make changes, push them to my git repo, and Heroku will deploy it! Simple as that.
+
+This has been the best experience I have had with any cloud/deployment application in a long (relatively) while. I will definetely be using Heroku for all of my projects.
