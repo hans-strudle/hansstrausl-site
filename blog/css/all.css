@@ -1,4 +1,9 @@
-body { max-height: 100%; }
+html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
 div {
 	width: 100%;
 	margin: 0 auto;
@@ -92,5 +97,5 @@ pre {
 	text-align: center;
 	margin-top: 25px;
 	opacity: 0.5;
-	max-height: 50px;
+	height: 50px;
 }
