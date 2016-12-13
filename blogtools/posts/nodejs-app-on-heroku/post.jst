@@ -34,17 +34,16 @@ The only other change was to allow my application to use whatever port the dyno 
 
 <pre>
 var http = require('http');
-
 function reqHandler(req, res){
   console.log('Hit: ', req.url);
   res.end('&<h1>Hello World&</h1>');
 }
-
 var server = http.createServer(reqHandler);
-
 server.listen(process.env.PORT || 80); // use the PORT env var, fallback to port 80
 </pre>
 
 That is all I needed to do to get my app up and running, I can now make changes, push them to my git repo, and Heroku will deploy it! Simple as that.
 
 This has been the best experience I have had with any cloud/deployment application in a long (relatively) while. I will definetely be using Heroku for all of my projects.
+
+This is the GitHub repo that this site is built off of: <a href="https://github.com/hans-strudel/hansstrausl-site">https://github.com/hans-strudel/hansstrausl-site</a>

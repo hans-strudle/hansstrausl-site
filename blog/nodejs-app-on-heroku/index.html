@@ -26,11 +26,14 @@ Then I created a new app with a single free dyno.<p>Next I created a git reposit
 <pre>
 web: node index.js
 </pre><p>Where <code>index.js</code> is the entry point for your application. The <code>web:</code> part tells the dyno to configure HTTP correctly.<p>The only other change was to allow my application to use whatever port the dyno specified. The dyno will set the environment vairable <code>PORT</code> to whatever the dyno is configured to use, and that is what your app should use to listen on. That means your app should look something like this:<p><pre>
-var http = require('http');<p>function reqHandler(req, res){
+var http = require('http');
+function reqHandler(req, res){
   console.log('Hit: ', req.url);
   res.end('&lt;h1>Hello World&lt;/h1>');
-}<p>var server = http.createServer(reqHandler);<p>server.listen(process.env.PORT || 80); // use the PORT env var, fallback to port 80
-</pre><p>That is all I needed to do to get my app up and running, I can now make changes, push them to my git repo, and Heroku will deploy it! Simple as that.<p>This has been the best experience I have had with any cloud/deployment application in a long (relatively) while. I will definetely be using Heroku for all of my projects.
+}
+var server = http.createServer(reqHandler);
+server.listen(process.env.PORT || 80); // use the PORT env var, fallback to port 80
+</pre><p>That is all I needed to do to get my app up and running, I can now make changes, push them to my git repo, and Heroku will deploy it! Simple as that.<p>This has been the best experience I have had with any cloud/deployment application in a long (relatively) while. I will definetely be using Heroku for all of my projects.<p>This is the GitHub repo that this site is built off of: <a target="_blank" href="https://github.com/hans-strudel/hansstrausl-site">https://github.com/hans-strudel/hansstrausl-site</a>
 </div>
 		</div>
 	</div>
