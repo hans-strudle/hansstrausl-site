@@ -3,11 +3,11 @@ html, body {
 	width: 100%;
 	margin: 0px;
 	padding: 0px;
+	opacity: 0.95;
 }
 div {
 	width: 100%;
 	margin: 0 auto;
-	opacity: 0.97;
 }
 a {
 	font-style:italic;
