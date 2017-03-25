@@ -35,11 +35,17 @@ a:hover, .current {
 	font-size: 36px;
 	line-height: 48px;
 }
-.logo:hover span {
-	display: none;
+.logo:before {
+	content: 'HS';
+}
+.logo:hover {
+	background: url('../res/logo.png');
+	background-size: 80%;
+	background-position: center center;
+	background-repeat: no-repeat;
 }
 .logo:hover:before {
-	content: '33';
+	display: none;
 }
 
 .navLink {
