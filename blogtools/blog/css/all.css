@@ -47,7 +47,6 @@ a:hover, .current {
 .logo:hover:before {
 	display: none;
 }
-
 .navLink {
 	width: 40%;
 	font-size: 1.4em;
