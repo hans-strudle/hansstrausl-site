@@ -4,6 +4,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=yes">
 	<meta name="author" content="Hans Strausl">
 	<meta name="description" content="Quick overview and guide on how I setup this website as a small node.js app on Heroku">
+	<meta name="theme-color" content="#000000">
 	<link rel="stylesheet" type="text/css" href="/css/all.css">
 </head>
 <body>
@@ -37,7 +38,7 @@ server.listen(process.env.PORT || 80); // use the PORT env var, fallback to port
 </div>
 		</div>
 	</div>
-	<div class="footer">Hans Strausl - 2016</div>
+	<div class="footer">Hans Strausl - 2017</div>
 	<script src="/js/all.js"></script>
 </body>
 <script>
@@ -47,5 +48,6 @@ server.listen(process.env.PORT || 80); // use the PORT env var, fallback to port
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-96383646-1', 'auto');
   ga('send', 'pageview');
+  (new Image(50, 50)).src = "../res/logo.png";
 </script>
 </html>

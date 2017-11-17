@@ -38,6 +38,9 @@ a:hover, .current {
 .logo:before {
 	content: 'HS';
 }
+#load {
+	background: url('../res/logo.png');
+}
 .logo:hover {
 	background: url('../res/logo.png');
 	background-size: 80%;
