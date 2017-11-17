@@ -1,4 +1,5 @@
 var http = require('http'),
+    zlib = require('zlib'),
     fs = require('fs'),
     path = require('path');
 
@@ -26,8 +27,16 @@ function handleRequest(req, res){
     var fullpath = map[req.url] || req.url;
     if (path.parse(fullpath).ext == '') fullpath += '/index.html'; // a folder
     try {
-        res.end(staticFiles[fullpath] || fs.readFileSync(base + fullpath));
+        if (req.headers['accept-encoding'] &&  /\bgzip\b/.test(req.headers['accept-encoding'])) {
+            res.writeHead(200, {'Content-Encoding': 'gzip'});
+            zlib.gzip(staticFiles[fullpath] || fs.readFileSync(base + fullpath), function (err, result){
+                res.end(result);
+            });
+        } else {
+            res.end(staticFiles[fullpath] || fs.readFileSync(base + fullpath));
+        }
     } catch (e){
+        console.log(e)
         res.writeHead(404);
         res.end(staticFiles['/404.html']);
     }
